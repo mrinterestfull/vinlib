@@ -1,6 +1,7 @@
 setup.cfg
 setup.py
 vinlib/__init__.py
+vinlib/vinlib.py
 vinlib.egg-info/PKG-INFO
 vinlib.egg-info/SOURCES.txt
 vinlib.egg-info/dependency_links.txt

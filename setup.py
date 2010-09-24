@@ -22,5 +22,6 @@ Vehicle Identification Library written in Python. Check if vin# is authentic."""
       ],
       entry_points="""
       # -*- Entry points: -*-
+        
       """,
       )

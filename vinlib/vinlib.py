@@ -4,7 +4,7 @@ VIN Vehicle information number checker,
 Inputs vin number and outputs true/false 
 """
 def check_vin(vin):
-    """Vehicle Information Number. This will return whether the entered vin number is authentic/currect.
+    """Vehicle Information Number. This will return whether the entered vin number is authentic/correct.
     Example:
     import vin
     vin.check_vin(my_vin_number)
