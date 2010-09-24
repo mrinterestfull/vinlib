@@ -1,11 +1,49 @@
 Metadata-Version: 1.0
 Name: vinlib
-Version: 0.5dev
+Version: 0.6.4dev
 Summary: Vehicle Identification Number Library
 Home-page: http://lucasmanual.com/mywiki/vinlib
 Author: Lukasz Szybalski
 Author-email: szybalski@gmail.com
 License: LGPL
-Description: Vehicle Identification Library written in Python. Check if vin# is authentic.
+Description: .. contents::
+        :depth: 3
+        
+        vinlib
+        ------
+        
+        vinlib is a Vehicle Identification Number Package that allows you to verify and decode parts of the vin number.
+        
+        Currently it can:
+        1) vinlib.check_vin will return whether the entered vin number is authentic/correct.
+        2) decode function coming soon.
+        
+        Install vinlib
+        ~~~~~~~~~~~~~
+        
+        PYPI
+        ====
+        
+        You can install vinlib from PyPi::
+        
+        easy_install vinlib
+        
+        Done.
+        
+        Using vinlib
+        ~~~~~~~~~~~
+        
+        In python code you can::
+        
+        import vinlib
+        myvinnumber='1hasomenumberhere'
+        print vinlib.check_vin(myvinnumber)
+        
+        This will return true or false depending if the vin number is correct or not.
+        
+        Enjoy,
+        
+        vinlib team.
+        
 Keywords: vin vinlib authentic
 Platform: UNKNOWN
