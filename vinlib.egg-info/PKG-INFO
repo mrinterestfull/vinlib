@@ -1,0 +1,11 @@
+Metadata-Version: 1.0
+Name: vinlib
+Version: 0.5dev
+Summary: Vehicle Identification Number Library
+Home-page: http://lucasmanual.com/mywiki/vinlib
+Author: Lukasz Szybalski
+Author-email: szybalski@gmail.com
+License: LGPL
+Description: Vehicle Identification Library written in Python. Check if vin# is authentic.
+Keywords: vin vinlib authentic
+Platform: UNKNOWN
