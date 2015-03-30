@@ -1,12 +1,13 @@
 Metadata-Version: 1.0
 Name: vinlib
-Version: 0.6.4dev
+Version: 0.6.5dev
 Summary: Vehicle Identification Number Library
 Home-page: http://lucasmanual.com/mywiki/vinlib
 Author: Lukasz Szybalski
 Author-email: szybalski@gmail.com
 License: LGPL
-Description: .. contents::
+Description: 
+        .. contents::
         :depth: 3
         
         vinlib
@@ -19,7 +20,7 @@ Description: .. contents::
         2) decode function coming soon.
         
         Install vinlib
-        ~~~~~~~~~~~~~
+        ~~~~~~~~~~~~~~
         
         PYPI
         ====
@@ -31,7 +32,7 @@ Description: .. contents::
         Done.
         
         Using vinlib
-        ~~~~~~~~~~~
+        ~~~~~~~~~~~~
         
         In python code you can::
         
