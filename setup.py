@@ -52,7 +52,8 @@ vinlib team.
       author='Lukasz Szybalski',
       author_email='szybalski@gmail.com',
       url='http://lucasmanual.com/mywiki/vinlib',
-      license='LGPL',
+      license='AGPL v3.0.  \
+      Commercial licenses are also available from Lucasmanual.com',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,

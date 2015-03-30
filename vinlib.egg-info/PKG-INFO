@@ -5,10 +5,10 @@ Summary: Vehicle Identification Number Library
 Home-page: http://lucasmanual.com/mywiki/vinlib
 Author: Lukasz Szybalski
 Author-email: szybalski@gmail.com
-License: LGPL
+License: AGPL v3.0.        Commercial licenses are also available from Lucasmanual.com
 Description: 
         .. contents::
-        :depth: 3
+           :depth: 3
         
         vinlib
         ------
@@ -27,7 +27,7 @@ Description:
         
         You can install vinlib from PyPi::
         
-        easy_install vinlib
+         easy_install vinlib
         
         Done.
         
@@ -36,9 +36,9 @@ Description:
         
         In python code you can::
         
-        import vinlib
-        myvinnumber='1hasomenumberhere'
-        print vinlib.check_vin(myvinnumber)
+         import vinlib
+         myvinnumber='1hasomenumberhere'
+         print vinlib.check_vin(myvinnumber)
         
         This will return true or false depending if the vin number is correct or not.
         
