@@ -1,17 +1,55 @@
 """
 Copyright Lukasz Szybalski
-VIN Vehicle information number checker,
-Inputs vin number and outputs true/false 
+VIN Vehicle information number checker, and now a decoder.
 """
-
-class _vin(object):
+import os
+import csv
+class Vin(object):
     """Vin class object"""
+    def __new__(cls, *p, **k):
+        inst = object.__new__(cls)
+        #Initialize code,year
+        inst._yeardata={}
+        with open(os.path.join(os.path.dirname(__file__),'year.csv')) as csvyear:
+            reader=csv.DictReader(csvyear)   
+            for row in reader:
+                inst._yeardata[row['code']]=row['year']
+        #Initilize wmi,manufacturer
+        inst._wmidata={}
+        with open(os.path.join(os.path.dirname(__file__),'wmi.csv')) as csvwmi:
+            reader=csv.DictReader(csvwmi)   
+            for row in reader:
+                inst._wmidata[row['wmi']]=row['manufacturer']
+        return inst
     def __init__(self,vin=None):
+    #def decode(self,vin=None):
+        #Decoding
         self.vin = (str(vin).upper())
         self.check = check_vin(self.vin)
+        if len(self.vin)>2:
+            self.wmi = self._vin_wmi(self.vin[:3])
         if len(self.vin)>9:
-            self.year = _vin_year(self.vin[9])
-
+            self.year = self._vin_year(self.vin[9])
+    def _vin_year(self,position10=None):
+        """Input: position 10 of vin number. Output: Four digit year"""
+        if not position10 or len(position10)!=1:
+            return False
+        else:
+            try:
+                return self._yeardata[position10]
+            except KeyError:
+                return False
+    def _vin_wmi(self,position123=None):
+        """Input: position 123 of vin number. Output: Manufacturer"""
+        if not position123 or len(position123)!=3:
+            return False
+        else:
+            try:
+                return self._wmidata[position123]
+            except KeyError:
+                return False
+                
+                
 
 def check_vin(vin=None):
     """Vehicle Information Number. This will return whether the entered vin number is authentic/correct.
@@ -103,20 +141,6 @@ def _convert_vin(field):
         else:
             return False
 
-def _vin_year(position10=None):
-    """Input: position 10 of vin number. Output: Four digit year"""
-    import csv
-    import os
-    if not position10 or len(position10)!=1:
-        return False
-    else:
-        with open(os.path.join(os.path.dirname(__file__),'year.csv')) as csvyear:
-            reader=csv.DictReader(csvyear)
-            for row in reader:
-                if row['code']==position10:
-                        return row['year']
-            return False 
-        
 
     
 def decode_vin(vin=None):
@@ -133,7 +157,7 @@ def decode_vin(vin=None):
     if not vin:
        return False
     if check_vin(vin):
-        return _vin(vin)
+        return Vin(vin)
     else: 
         #special case
-        return _vin(vin)
+        return Vin(vin)

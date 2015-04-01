@@ -1,6 +1,9 @@
+MANIFEST.in
 setup.cfg
 setup.py
 vinlib/__init__.py
+vinlib/wmi.csv
+vinlib/year.csv
 vinlib.egg-info/PKG-INFO
 vinlib.egg-info/SOURCES.txt
 vinlib.egg-info/dependency_links.txt
