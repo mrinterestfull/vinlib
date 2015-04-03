@@ -9,11 +9,16 @@ class Vin(object):
     def __new__(cls, *p, **k):
         inst = object.__new__(cls)
         #Initialize code,year
-        inst._yeardata={}
+        inst._yeardata_alpha={}
+        inst._yeardata_num={}
+        #Passenger Auto
         with open(os.path.join(os.path.dirname(__file__),'year.csv')) as csvyear:
             reader=csv.DictReader(csvyear)   
             for row in reader:
-                inst._yeardata[row['code']]=row['year']
+                if int(row['year'])<2010:
+                    inst._yeardata_num[row['code']]=row['year']
+                else:
+                    inst._yeardata_alpha[row['code']]=row['year']
         #Initilize wmi,manufacturer
         inst._wmidata={}
         with open(os.path.join(os.path.dirname(__file__),'wmi.csv')) as csvwmi:
@@ -29,14 +34,19 @@ class Vin(object):
         if len(self.vin)>2:
             self.wmi = self._vin_wmi(self.vin[:3])
         if len(self.vin)>9:
-            self.year = self._vin_year(self.vin[9])
-    def _vin_year(self,position10=None):
-        """Input: position 10 of vin number. Output: Four digit year"""
+            self.year = self._vin_year(self.vin[9],self.vin[6])
+    def _vin_year(self,position10=None,position7=None):
+        """Input: position 10 of vin number. Output: Four digit year
+        http://www.gpo.gov/fdsys/granule/CFR-2011-title49-vol6/CFR-2011-title49-vol6-part565
+        """
         if not position10 or len(position10)!=1:
             return False
         else:
             try:
-                return self._yeardata[position10]
+                if str(position7).isalpha():
+                    return self._yeardata_alpha[position10]
+                else:
+                    return self._yeardata_num[position10]
             except KeyError:
                 return False
     def _vin_wmi(self,position123=None):
