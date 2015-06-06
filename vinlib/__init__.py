@@ -25,6 +25,8 @@ class Vin(object):
             reader=csv.DictReader(csvwmi)   
             for row in reader:
                 inst._wmidata[row['wmi']]=row['manufacturer']
+        #Initilize 4char make
+        inst._shortmakedata={}
         return inst
     def __init__(self,vin=None):
     #def decode(self,vin=None):
