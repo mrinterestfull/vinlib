@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.7.23'
+version = '0.7.44'
 
 setup(name='vinlib',
       version=version,
@@ -40,7 +40,7 @@ Done.
 Using vinlib
 ~~~~~~~~~~~
 
-In python code you can check if the vin is valid::
+In python code you can batch through the vins to see if they are valid:
 
  import vinlib
  myvinnumber='1hasomenumberhere'
@@ -49,12 +49,27 @@ In python code you can check if the vin is valid::
 This will return true or false depending if the vin number is correct or not.
 
 
-In python code you can decode vin's year::
+To get more details on vin use::
+ from vinlib import Vin
+ myvin=Vin('1FA6p8Th8F1234567')
 
- import vinlib
- print vinlib.Vin('1ZVIHaveAVinNumber17').year
+#prints the vin number we passed
+ myvin.vin
+ '1FA6P8TH8F1234567'
 
-Additional Examples::
+#prints if the check digit is correct. If False the vin# is invalid
+ myvin.check
+ False
+
+#wmi tells you the World Manufacturer Identifier
+ myvin.wmi
+ 'FORD'
+
+#year tells you the year of the car
+ myvin.year
+ '2015'
+
+or
 
  import vinlib
  #get year from a vin
@@ -68,7 +83,7 @@ Enjoy,
 vinlib team.
 """,
       classifiers=[], # Get strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
-      keywords='vin vinlib authentic',
+      keywords='vin vinlib authentic, wmi, decode, check digit',
       author='Lukasz Szybalski',
       author_email='szybalski@gmail.com',
       url='http://lucasmanual.com/mywiki/vinlib',
