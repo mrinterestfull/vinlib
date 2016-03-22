@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.7.44'
+version = '2016.3.12'
 
 setup(name='vinlib',
       version=version,
@@ -44,7 +44,7 @@ In python code you can batch through the vins to see if they are valid:
 
  import vinlib
  myvinnumber='1hasomenumberhere'
- print vinlib.check_vin(myvinnumber)
+ print(vinlib.check_vin(myvinnumber))
 
 This will return true or false depending if the vin number is correct or not.
 
