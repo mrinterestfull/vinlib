@@ -24,6 +24,10 @@ Out[5]: 'FORD'
 #year tells you the year of the car
 In [6]: myvin.year
 Out[6]: '2015'
+
+#toJSON for web based ready plugin
+In [6]: myvin.toJSON()
+Out [6]: well, see yourself ;)
 """
     def __new__(cls, *p, **k):
         """These items will be ready and preloaded when class is loaded"""
@@ -81,6 +85,19 @@ Out[6]: '2015'
                 return self._wmidata[position123]
             except KeyError:
                 return False
+    def toJSON(self):
+        """
+        toJSON() returns json string using python json.dumps()
+        In Javascript you will need to use .parse() to convert it into JSON object.
+        If you need an JSON object returned from within python instead of JSON string then you can use:
+        json.loads(myvin.toJSON()) 
+        or 
+        return(json.loads(myvin.toJSON()))
+        """
+        import json
+        return json.dumps(self, default=lambda o: { k:v for k,v in vars(o).items() if not k.startswith('_') }, sort_keys=True)
+        #return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        #{ k:v for k,v in vars(myObject).items() if not k.startswith('_') }
 
 
 

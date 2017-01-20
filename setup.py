@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '2016.3.12'
+version = '2017.01.03'
 
 setup(name='vinlib',
       version=version,
@@ -21,7 +21,7 @@ Currently it can:
 
 1) vinlib.check_vin will return whether the entered vin number is authentic/correct.
 
-2) Vin('somevinhere') will return object that has vehicle year and vin check true/false flag. 
+2) Vin('somevinhere') will return object that has vehicle year and vin check true/false flag.
 
 Install vinlib
 ~~~~~~~~~~~~~
@@ -49,7 +49,7 @@ In python code you can batch through the vins to see if they are valid:
 This will return true or false depending if the vin number is correct or not.
 
 
-To get more details on vin use::
+To get more details on vin use the class based decoding::
  from vinlib import Vin
  myvin=Vin('1FA6p8Th8F1234567')
 
@@ -69,7 +69,12 @@ To get more details on vin use::
  myvin.year
  '2015'
 
-or
+#toJSON returns the data about vin for json style cosumption. jquery .ajax call,etc
+myvin.toJSON()
+outputs...well see yourself!
+
+
+or more copy paste examples:
 
  import vinlib
  #get year from a vin
@@ -88,7 +93,7 @@ vinlib team.
       author_email='szybalski@gmail.com',
       url='http://lucasmanual.com/mywiki/vinlib',
       license='AGPL v3.0.  \
-      Commercial licenses are also available from Lucasmanual.com',
+      Commercial licenses are also available from vinlib.org',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=False,
@@ -97,6 +102,6 @@ vinlib team.
       ],
       entry_points="""
       # -*- Entry points: -*-
-        
+
       """,
       )
